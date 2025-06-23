@@ -1,0 +1,200 @@
+﻿@model efAkquisition.qry_ProjekteASP
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.TITEL_PROJEKT_FILM)</h2>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Datum Angebot")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATUM_ANGEBOT, "MgDateTime")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aktualisiert)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aktualisiert, "MgDateTime")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Land)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Land)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model, "Anbieter")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.zuständig)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bearbeiter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Regie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Regie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Werke)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Werke)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produzenten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produzenten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produktionsfirma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produktionsfirma)
+        </dd>
+
+        <dt>
+            @Html.Label("Script Buch")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Script_Buch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Drehbeginn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Drehbeginn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lieferbar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lieferbar)
+        </dd>
+
+        <dt>
+            @Html.Label("Release")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.US_Release)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Geschichte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Geschichte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Besetzung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Besetzung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sonstiges)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sonstiges)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Beurteilung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beurteilung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Budget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Budget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Angebot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Angebot)
+        </dd>
+
+        <dt>
+            @Html.Label("aktuelles Festival")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Festival_akt)
+        </dd>
+    </dl>
+</div>
+<p class="dontPrint">
+    @Html.ActionLink("Bearbeiten", "Edit", new { id = Model.ENTRY_No }) |
+    @Html.ActionLink("Zum Filter", "Filter")
+    @Html.ActionLink("Print Version", "DetailsPrintVersion", new { id = Model.ENTRY_No })
+</p>

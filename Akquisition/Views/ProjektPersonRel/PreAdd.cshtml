@@ -1,0 +1,90 @@
+﻿@model List<Akquisition.MyStuff.PrePerson>
+
+@{
+    ViewBag.Title = "Beteiligte hinzufügen: " + ViewBag.Projekt;
+}
+
+<h3>@Html.Raw(ViewBag.Projekt)</h3>
+<h3>Hinzufügen</h3>
+
+@using (Html.BeginForm("PreAdd", "ProjektPersonRel", FormMethod.Post))
+{
+    <div class="form-group">
+        <h3>Regie</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 1)
+                { 
+                <tr>
+                   <td>@Html.EditorFor(model => model[i].Name)</td>
+                    <td>@Html.HiddenFor(model => model[i].EntryNo)</td>
+                    <td>@Html.HiddenFor(model => model[i].FunktionNr)</td>
+                </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div class="form-group">
+        <h3>Produzenten</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 2)
+                {
+                    <tr>
+                        <td>@Html.EditorFor(model => model[i].Name)</td>
+                        <td>@Html.HiddenFor(model => model[i].EntryNo)</td>
+                        <td>@Html.HiddenFor(model => model[i].FunktionNr)</td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div class="form-group">
+        <h3>Script</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 3)
+                {
+                    <tr>
+                        <td>@Html.EditorFor(model => model[i].Name)</td>
+                        <td>@Html.HiddenFor(model => model[i].EntryNo)</td>
+                        <td>@Html.HiddenFor(model => model[i].FunktionNr)</td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div class="form-group">
+        <h3>Darsteller</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 4)
+                {
+                    <tr>
+                        <td>@Html.EditorFor(model => model[i].Name)</td>
+                        <td>@Html.HiddenFor(model => model[i].EntryNo)</td>
+                        <td>@Html.HiddenFor(model => model[i].FunktionNr)</td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+
+
+    <div class="form-group">
+        <input type="submit" value="weiter" class="btn btn-primary"/>
+    </div>
+}
+

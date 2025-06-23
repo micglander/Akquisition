@@ -1,0 +1,10 @@
+﻿@using ReportViewerForMvc;
+
+@{
+    ViewBag.Title = "Bericht";
+}
+
+<div>
+    @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { SizeToReportContent = true, Width = System.Web.UI.WebControls.Unit.Percentage(100), Height = System.Web.UI.WebControls.Unit.Percentage(100) })
+</div>
+

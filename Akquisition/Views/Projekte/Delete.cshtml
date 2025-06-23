@@ -1,0 +1,25 @@
+﻿@model efAkquisition.tbl_Projekte
+
+@{
+    ViewBag.Title = "Projekt löschen";
+}
+
+<h3>Wollen Sie dieses Projekt wirklich löschen?</h3>
+<hr/>
+<div>
+    <div class="form-group" style="font-weight:bold">
+        @Html.DisplayFor(model => model.TITEL_PROJEKT_FILM)
+    </div>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <input type="submit" value="Löschen" class="btn btn-primary" />
+        </div>
+
+        <div class="form-group">
+            @Html.ActionLink("Zum Filter", "Filter")
+        </div>
+    }
+</div>

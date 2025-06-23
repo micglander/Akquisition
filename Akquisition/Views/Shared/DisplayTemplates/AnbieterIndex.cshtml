@@ -1,0 +1,11 @@
+﻿@model efAkquisition.qry_ProjekteIndex
+
+@if (Model != null)
+{
+    @Html.ActionLink(Model.Anbieter, "Details", "Anbieter", new { id = Model.AnbieterNr }, null)
+}
+else
+{
+    @Html.TextBox("")
+}
+

@@ -1,0 +1,50 @@
+﻿@model efAkquisition.tbl_Anbieter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Kürzel)</h2>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kontaktperson)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kontaktperson)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnbieterAF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnbieterAF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Bearbeiter.Bearbeiter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Bearbeiter.Bearbeiter)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Projekte")
+        </dt>
+
+        <dd>
+            @foreach(efAkquisition.tbl_Projekte projekt in Model.tbl_Projekte)
+            {
+               @Html.ActionLink(projekt.TITEL_PROJEKT_FILM, "Details", "Projekte", new { id = projekt.ENTRY_No }, null)@Html.Raw(" / ")
+            }
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Bearbeiten", "Edit", new { id = Model.AnbieterNr }) |
+    @Html.ActionLink("Zum Index", "Index")
+</p>

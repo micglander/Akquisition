@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Marktliste zurücksetzen";
+}
+
+<h2>Marktliste zurücksetzen</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-group">
+        Wolen Sie die Marktliste jetzt zurücksetzen?
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" value="Ja" class="btn btn-primary" />
+    </div>
+    
+    
+}
+

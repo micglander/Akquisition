@@ -1,0 +1,39 @@
+﻿@model List<efAkquisition.tbl_WarenkorbProjektRel>
+
+@{
+    ViewBag.Title = "Favoriten";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Warenkorb", FormMethod.Post))
+{
+<div class="form-group">
+    <input type="submit" value="Speichern" class="btn btn-primary" />
+</div>
+    <table class="table">
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Prio)*@
+                    @Html.EditorFor(modelItem => item.Prio, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tbl_Projekte.TITEL_PROJEKT_FILM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tbl_Warenkorb.Benutzer)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>
+}

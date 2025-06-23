@@ -1,0 +1,14 @@
+﻿@model efAkquisition.tbl_Projekte
+
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Upload</h2>
+<hr/>
+
+@using (Html.BeginForm("Upload", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="FileUpload" />
+    <input type="submit" name="Submit" id="Submit" value="Upload" />
+}

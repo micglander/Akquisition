@@ -1,0 +1,68 @@
+﻿@model IEnumerable<efAkquisition.qry_ProjekteIndex>
+
+@{
+    ViewBag.Title = "IndexForPrint";
+    Layout = "~/Views/Shared/_LayoutForPrint.cshtml";
+}
+
+<h2>Projekte</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titel)
+        </th>
+        <th>
+            @Html.Label("Land")
+        </th>
+        <th>
+            @Html.Label("Rating")
+        </th>
+        <th>
+            @Html.Label("Datum")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Anbieter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Regie)
+        </th>
+        <th>
+            @Html.Label("Status")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.zuständig)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Land)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATUM_ANGEBOT, "MgDateTime")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anbieter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Regie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.zuständig)
+            </td>
+        </tr>
+    }
+
+</table>

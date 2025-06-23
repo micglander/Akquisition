@@ -1,0 +1,27 @@
+﻿@model List<efAkquisition.tbl_ProjektFirmaRel>
+
+@{
+    ViewBag.Title = "Produktionsfirmen löschen: " + ViewBag.Projekt;
+}
+
+<h3>@Html.Raw(ViewBag.Projekt)</h3>
+
+    <div class="form-group">
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => model[i].tbl_Firmen.Firma)</td>
+                        <td>@Html.HiddenFor(model => model[i].ID)</td>
+                        <td>@Html.ActionLink("Löschen", "Delete", new { ID = this.Model[i].ID })</td>
+                    </tr>
+                }
+        </table>
+    </div>
+
+<div>
+    @Html.ActionLink("Zum Projekt", "Edit", "Projekte", null, null, "rels", new { id = Model[0].EntryNo}, null)
+</div>
+
+
+

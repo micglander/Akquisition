@@ -1,0 +1,118 @@
+﻿@model List<Akquisition.MyStuff.PrePerson>
+
+@{
+    ViewBag.Title = "Beteiligte hinzufügen: " + ViewBag.Projekt;
+}
+
+<h3>@Html.Raw(ViewBag.Projekt)</h3>
+<h3>Hinzufügen</h3>
+
+@using (Html.BeginForm("Add", "ProjektPersonRel", FormMethod.Post))
+{
+    <div class="form-group">
+        <h3>Regie</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 1)
+                { 
+                <tr>
+                    <td>@Html.TextBoxFor(model => model[i].Name, new { @readonly = true })</td>
+                    <td>@Html.DropDownListFor(model => model[i].PersonNr, new SelectList(ViewBag.Auswahl[i], "PersonNr", "Name"), new { style = "width: 250px;" })</td>
+                    <td width="20px"></td>
+                    <td>@Html.Label("Prio ")</td>
+                    <td>@Html.TextBoxFor(model => model[i].Prio, new { @class = "smallEditor" })</td>
+                    <td width="20px"></td>
+                    <td>@Html.Label("neu anlegen ")</td>
+                    <td>@Html.CheckBoxFor(model => model[i].CreatePerson)</td>
+                    <td>@Html.HiddenFor(model => model[i].EntryNo)</td>
+                    <td>@Html.HiddenFor(model => model[i].FunktionNr)</td>
+                </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div class="form-group">
+        <h3>Produzenten</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 2)
+                {
+                    <tr>
+                        <td>@Html.TextBoxFor(model => model[i].Name, new { @readonly = true })</td>
+                        <td>@Html.DropDownListFor(model => model[i].PersonNr, new SelectList(ViewBag.Auswahl[i], "PersonNr", "Name"), new { style = "width: 250px;" })</td>
+                        <td width="20px"></td>
+                        <td>@Html.Label("Prio ")</td>
+                        <td>@Html.TextBoxFor(model => model[i].Prio, new { @class = "smallEditor" })</td>
+                        <td width="20px"></td>
+                        <td>@Html.Label("neu anlegen ")</td>
+                        <td>@Html.CheckBoxFor(model => model[i].CreatePerson)</td>
+                        <td>@Html.HiddenFor(model => model[i].EntryNo)</td>
+                        <td>@Html.HiddenFor(model => model[i].FunktionNr)</td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div class="form-group">
+        <h3>Script</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 3)
+                {
+                    <tr>
+                        <td>@Html.TextBoxFor(model => model[i].Name, new { @readonly = true })</td>
+                        <td>@Html.DropDownListFor(model => model[i].PersonNr, new SelectList(ViewBag.Auswahl[i], "PersonNr", "Name"), new { style = "width: 250px;" })</td>
+                        <td width="20px"></td>
+                        <td>@Html.Label("Prio ")</td>
+                        <td>@Html.TextBoxFor(model => model[i].Prio, new { @class = "smallEditor" })</td>
+                        <td width="20px"></td>
+                        <td>@Html.Label("neu anlegen ")</td>
+                        <td>@Html.CheckBoxFor(model => model[i].CreatePerson)</td>
+                        <td>@Html.HiddenFor(model => model[i].EntryNo)</td>
+                        <td>@Html.HiddenFor(model => model[i].FunktionNr)</td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div class="form-group">
+        <h3>Darsteller</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 4)
+                {
+                    <tr>
+                        <td>@Html.TextBoxFor(model => model[i].Name, new { @readonly = true })</td>
+                        <td>@Html.DropDownListFor(model => model[i].PersonNr, new SelectList(ViewBag.Auswahl[i], "PersonNr", "Name"), new { style = "width: 250px;" })</td>
+                        <td width="20px"></td>
+                        <td>@Html.Label("Prio ")</td>
+                        <td>@Html.TextBoxFor(model => model[i].Prio, new { @class = "smallEditor" })</td>
+                        <td width="20px"></td>
+                        <td>@Html.Label("neu anlegen ")</td>
+                        <td>@Html.CheckBoxFor(model => model[i].CreatePerson)</td>
+                        <td>@Html.HiddenFor(model => model[i].EntryNo)</td>
+                        <td>@Html.HiddenFor(model => model[i].FunktionNr)</td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+
+
+    <div class="form-group">
+        <input type="submit" value="Speichern" class="btn btn-primary"/>
+    </div>
+}
+

@@ -1,0 +1,30 @@
+﻿@model List<efAkquisition.tbl_Links>
+
+@{
+    ViewBag.Title = "Links bearbeiten: " + ViewBag.Projekt;
+}
+
+<h3>@Html.Raw(ViewBag.Projekt)</h3>
+
+@using (Html.BeginForm("Edit", "Links", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <table>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Html.EditorFor(model => model[i].Titel)</td>
+                    <td>@Html.EditorFor(model => model[i].URL)</td>
+                    <td>@Html.HiddenFor(model => model[i].LinkID)</td>
+                    <td>@Html.HiddenFor(model => model[i].EntryNo)</td>
+                    <td>@Html.ActionLink("Löschen", "Delete", new { ID = Model[i].LinkID }, new { onclick = "return confirm('Soll der link entfernt werden?');" })</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Speichern" class="btn btn-primary" />
+    </div>
+}

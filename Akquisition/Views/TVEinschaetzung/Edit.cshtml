@@ -1,0 +1,34 @@
+﻿@model List<efAkquisition.tbl_TV_Einschaetzung>
+@{
+    ViewBag.Title = "TV Einschätzung bearbeiten: " + ViewBag.Projekt;
+}
+
+<h3>@Html.Raw(ViewBag.Title)</h3>
+<hr/>
+
+@using (Html.BeginForm("Edit", "TVEinschaetzung", FormMethod.Post))
+{
+    <div class="form-horizontal">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="form-group">
+                    <div class="col-md-1">
+                        @Html.DisplayFor(model => model[i].tbl_Sender.Sender)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.EditorFor(Model => Model[i].Kommentar, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.ActionLink("Löschen", "Delete", new { EntryNo = Model[i].EntryNo, SenderNr = Model[i].SenderNr }, new { onclick = "return confirm('Soll die Einschätzung entfernt werden?');" })
+                    </div>
+                    @Html.HiddenFor(model => model[i].EntryNo)
+                    @Html.HiddenFor(model => model[i].SenderNr)
+                </div>
+            }
+
+        <div class="form-group">
+            <input type="submit" value="Speichern" class="btn btn-primary" />
+        </div>
+    </div>
+}
+

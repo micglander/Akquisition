@@ -1,0 +1,27 @@
+﻿@model List<efAkquisition.tbl_ProjektLandRel>
+@{
+    ViewBag.Title = "Länder bearbeiten: " + ViewBag.Projekt;
+}
+
+<h3>@Html.Raw(ViewBag.Projekt)</h3>
+
+@using (Html.BeginForm("Add", "ProjektLandRel", FormMethod.Post))
+{
+    <div class="form-group">
+        <table>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Html.DropDownListFor(model => model[i].LandNr, new SelectList(ViewBag.Auswahl, "LandNr", "Land", Model[i].LandNr))</td>
+                    <td>@Html.HiddenFor(model => model[i].ID)</td>
+                    <td>@Html.HiddenFor(model => model[i].EntryNo)</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Speichern" class="btn btn-primary" />
+    </div>
+}
+

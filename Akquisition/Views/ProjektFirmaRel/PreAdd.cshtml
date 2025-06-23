@@ -1,0 +1,31 @@
+﻿@model List<Akquisition.MyStuff.PreFirma>
+
+@{
+    ViewBag.Title = "Produktionsfirmen hinzufügen: " + ViewBag.Projekt;
+}
+
+<h3>@Html.Raw(ViewBag.Projekt)</h3>
+<h3>Produktionsfirmen hinzufügen</h3>
+
+
+@using (Html.BeginForm("PreAdd", "ProjektFirmaRel", FormMethod.Post))
+{
+    <div class="form-group">
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                <tr>
+                   <td>@Html.EditorFor(model => model[i].Name)</td>
+                    <td>@Html.HiddenFor(model => model[i].EntryNo)</td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" value="weiter" class="btn btn-primary"/>
+    </div>
+}
+

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<efAkquisition.tbl_Anbieter>
+
+@{
+    ViewBag.Title = "Anbieter";
+}
+
+<h2>Anbieter</h2>
+
+<p>
+    @Html.ActionLink("Neuen Anbieter erstellen", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kürzel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kontaktperson)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnbieterAF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Bearbeiter.Bearbeiter)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kürzel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kontaktperson)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnbieterAF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_Bearbeiter.Bearbeiter)
+        </td>
+        <td>
+            @Html.ActionLink("Bearbeiten", "Edit", new { id=item.AnbieterNr })&nbsp;|&nbsp;@Html.ActionLink("Details", "Details", new { id = item.AnbieterNr })&nbsp;|&nbsp;@Html.ActionLink("Löschen", "Delete", new { id=item.AnbieterNr })
+        </td>
+    </tr>
+}
+
+</table>

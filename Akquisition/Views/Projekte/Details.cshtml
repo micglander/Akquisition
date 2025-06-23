@@ -1,0 +1,471 @@
+﻿@model efAkquisition.tbl_Projekte
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.TITEL_PROJEKT_FILM)</h2>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Originaltitel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Originaltitel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImdbNr)
+        </dt>
+
+        <dd>
+            <a href=@Model.Url target="_blank">@Model.ImdbNr</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Projektart.Projektart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Projektart.Projektart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Filmformate.Format)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Filmformate.Format)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayName("zuständig")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Bearbeiter.Bearbeiter)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Anbieter (Weltvertrieb)")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Anbieter.Kürzel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kontakt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kontakt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATUM_ANGEBOT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATUM_ANGEBOT, "MgDateTime")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aufgenommen_am)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aufgenommen_am)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aktualisiert)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aktualisiert, "MgDateTime")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.geaendert_von)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.geaendert_von)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        <dt style='white-space: normal;'>
+            @Html.DisplayNameFor(model => model.LENr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Lektoratseinschaetzung.Lektoratseinschaetzung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Status.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Status.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("verkauft an")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Verleih.Verleih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Backing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Backing) @Html.DisplayFor(model => model.tbl_BackingWE.Waehrung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TV_Einschaetzung_Kommentar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TV_Einschaetzung_Kommentar)
+        </dd>
+
+        <dt>
+            @Html.Label("Ko-Pro Einschätzung")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Koproduktionseinschaetzung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age_Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age_Rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MPAA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MPAA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age_Rating_Kommentar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age_Rating_Kommentar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Drehbeginn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Drehbeginn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lieferbar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lieferbar)
+        </dd>
+
+        <dt>
+            @Html.Label("Release")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.US_Release)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GenreString)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GenreString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LandString)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LandString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuswertungspotentialString)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuswertungspotentialString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TV_EinschaetzungString)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TV_EinschaetzungString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThemenString)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThemenString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirmenList)
+        </dt>
+
+        <dd>
+            @for (int i = 0; i < Model.FirmenList.Count(); i++)
+            {
+                <a href=@Model.FirmenList[i].Url target="_blank">@Model.FirmenList[i].Firma</a> if (i < Model.FirmenList.Count() - 1)
+                 {@Html.Raw(" / ")}
+            }
+        </dd>
+
+        <dt>
+            @Html.Label("Regie")
+        </dt>
+
+        <dd>
+            @for (int i = 0; i < Model.RegieList.Count(); i++)
+            {
+                @*Für später: @Html.ActionLink(@Model.RegieList[i].Name, "Details", "Personen", new { id = @Model.RegieList[i].PersonNr}, null)*@
+                <a href=@Model.RegieList[i].Url target="_blank">@Model.RegieList[i].Name</a> if (@Model.RegieList[i].Filme != null) { @Html.Raw("(" + @Model.RegieList[i].Filme + ")") }
+                if (i < Model.RegieList.Count() - 1)
+                 {@Html.Raw(" / ")}
+            }
+        </dd>
+
+        <dt>
+            @Html.Label("Produzenten")
+        </dt>
+
+        <dd>
+            @for (int i = 0; i < Model.ProduzentenList.Count(); i++)
+            {
+                <a href=@Model.ProduzentenList[i].Url target="_blank">@Model.ProduzentenList[i].Name</a> if (i < Model.ProduzentenList.Count() - 1)
+                 {@Html.Raw(" / ")}
+            }
+        </dd>
+
+        <dt>
+            @Html.Label("Script")
+        </dt>
+
+        <dd>
+            @for (int i = 0; i < Model.ScriptList.Count(); i++)
+            {
+                <a href=@Model.ScriptList[i].Url target="_blank">@Model.ScriptList[i].Name</a> if (i < Model.ScriptList.Count() - 1)
+                 {@Html.Raw(" / ")}
+            }
+        </dd>
+
+        <dt>
+            @Html.Label("Darsteller")
+        </dt>
+
+        <dd>
+            @for (int i = 0; i < Model.BesetzungList.Count(); i++)
+            {
+                <a href=@Model.BesetzungList[i].Url target="_blank">@Model.BesetzungList[i].Name</a> if (i < Model.BesetzungList.Count() - 1)
+                 {@Html.Raw(" / ")}
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Historie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Historie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Geschichte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Geschichte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Synopsis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Synopsis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Beurteilung_Lektor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beurteilung_Lektor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Beurteilung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beurteilung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sonstiges)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sonstiges)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AskingX)
+        </dt>
+
+        <dd>
+           @Html.DisplayFor(model => model.AskingString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AngebotX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AngebotString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kaufpreis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KaufpreisString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Angebot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Angebot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BudgetX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BudgetX) @Html.DisplayFor(model => model.tbl_BudgetWE.Waehrung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Budget_Kommentar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Budget_Kommentar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Archiv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Archiv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Festival_akt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Festival_akt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produktionsliste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produktionsliste)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prioliste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prioliste)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sichtung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sichtung)
+        </dd>
+
+        <dt class="dontPrint">
+            @Html.Label("Dokumente")
+        </dt>
+
+        <dd class="dontPrint">
+            @Html.ActionLink("Lektorat", "GetLektorat", new { id = Model.ENTRY_No }) |
+            @Html.ActionLink("Vergleichsfilm", "GetVergleichsfilm", new { id = Model.ENTRY_No })
+        </dd>
+
+        <dt class="dontPrint">
+            @Html.Label("Links")
+        </dt>
+
+        <dd class="dontPrint">
+            @for (int i = 0; i < Model.LinksList.Count(); i++)
+            {
+                <a href=@Model.LinksList[i].URL target="_blank">@Model.LinksList[i].Titel</a><br />
+            }
+        </dd>
+    </dl>
+
+</div>
+
+<p class="dontPrint">
+    @Html.ActionLink("Bearbeiten", "Edit", new { id = Model.ENTRY_No }) |
+    @Html.ActionLink("Zum Index", "Index") |
+    @Html.ActionLink("Print Version", "DetailsPrintVersion", new { id = Model.ENTRY_No }) |
+    @Html.ActionLink("Zu Favoriten", "AddToWarenkorb", "Warenkorb", new { id = Model.ENTRY_No }, null)
+</p>

@@ -1,0 +1,33 @@
+﻿@model List<efAkquisition.tbl_TV_Einschaetzung>
+@{
+    ViewBag.Title = "TV Einschätzung: " + ViewBag.Projekt;
+}
+
+<h3>@Html.Raw(ViewBag.Title)</h3>
+<hr/>
+
+@using (Html.BeginForm("Add", "TVEinschaetzung", FormMethod.Post))
+{
+    <div class="form-horizontal">
+
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="form-group">
+                    <div class="col-md-1">
+                        @Html.DisplayFor(model => model[i].tbl_Sender.Sender)
+                    </div>
+                    <div class="col-md-11">
+                        @Html.EditorFor(Model => Model[i].Kommentar, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                        @Html.HiddenFor(model => model[i].EntryNo)
+                        @Html.HiddenFor(model => model[i].SenderNr)
+               </div>
+            }
+        <div class="form-group">
+            <input type="submit" value="Speichern" class="btn btn-primary" />
+        </div>
+    </div>
+
+    
+}
+

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<efAkquisition.tbl_Personen>
+
+@{
+    ViewBag.Title = "Beteiligte";
+}
+
+<h2>Beteiligte</h2>
+<div>
+    @Html.ActionLink("Neue Peson erstellen", "Create")
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImdbID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Starmeter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Filme)
+        </th>
+        @*<th>
+            @Html.DisplayName("Job 1")
+        </th>
+        <th>
+            @Html.DisplayName("Job 2")
+        </th>
+        <th>
+            @Html.DisplayName("Job 3")
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImdbID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Starmeter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Filme)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.tbl_Jobs1.Job)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_Jobs2.Job)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_Jobs3.Job)
+        </td>*@
+        <td>
+            @Html.ActionLink("Bearbeiten", "Edit", new { id = item.PersonNr })&nbsp;|&nbsp;@Html.ActionLink("Löschen", "Delete", new { id=item.PersonNr })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Zum Filter", "Filter")
+</div>

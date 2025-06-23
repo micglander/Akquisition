@@ -1,0 +1,107 @@
+﻿@model IEnumerable<efAkquisition.qry_ProjekteIndex>
+
+@{
+    ViewBag.Title = "Projekte";
+}
+
+    <h2>Projekte</h2>
+    <div>
+        @Html.ActionLink("Neues Projekt erstellen", "Create") | @Html.ActionLink("Zum Filter", "Filter") | @Html.ActionLink("Print Version", "IndexPrintVersion")
+    </div>
+    <hr />
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titel)
+            </th>
+            <th>
+                @Html.Label("Land")
+            </th>
+            <th>
+                @Html.Label("Rating")
+            </th>
+            <th>
+                @Html.Label("Datum")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anbieter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Regie)
+            </th>
+            <th>
+                @Html.Label("Status")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.zuständig)
+            </th>
+            <th>
+                @Html.Label("Marktliste")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prioliste)
+            </th>
+            <th>
+                @Html.Label("PL")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Land)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DATUM_ANGEBOT, "MgDateTime")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item, "AnbieterIndex")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Regie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.zuständig)
+                </td>
+                <td style="text-align:center">
+                    @Html.HiddenFor(modelItem => item.ENTRY_No)
+                    @Html.CheckBoxFor(modelItem => item.Festival_akt, new { onclick = "InvertBool(this, 1);" })
+                </td>
+                <td style="text-align:center">
+                    @Html.HiddenFor(modelItem => item.ENTRY_No)
+                     @Html.CheckBoxFor(modelItem => item.Prioliste, new { onclick = "InvertBool(this, 3);" })
+                </td>
+                <td style="text-align:center">
+                    @Html.HiddenFor(modelItem => item.ENTRY_No)
+                    @Html.CheckBoxFor(modelItem => item.Produktionsliste, new { onclick = "InvertBool(this, 5);" })
+                </td>
+                <td>
+                    @Html.ActionLink("Bearbeiten", "Edit", new { id = item.ENTRY_No })&nbsp;|&nbsp;@Html.ActionLink("Details", "Details", new { id = item.ENTRY_No })&nbsp;|&nbsp;@Html.ActionLink("Löschen", "Delete", new { id = item.ENTRY_No })&nbsp;|&nbsp;@Html.ActionLink("Favorit", "AddToWarenkorb", "Warenkorb", new {  id = item.ENTRY_No }, null)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <script>
+        function InvertBool(element, was) {
+            $.ajax({
+                url: '@Url.Action("InvertBool", "Projekte")',
+                data: { id: $(element).parent().find(":hidden").first().val(), was: was }
+            }).done(function () {
+
+            });
+        }
+    </script>

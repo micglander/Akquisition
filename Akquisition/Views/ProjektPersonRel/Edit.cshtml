@@ -1,0 +1,86 @@
+﻿@model List<efAkquisition.tbl_ProjektPersonRel>
+
+@{
+    ViewBag.Title = "Beteiligte löschen: " + ViewBag.Projekt;
+}
+
+<h3>@Html.Raw(ViewBag.Projekt)</h3>
+
+    <div class="form-group">
+        <h3>Regie</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 1)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => model[i].tbl_Personen.Name)</td>
+                        <td>@Html.HiddenFor(model => model[i].ID)</td>
+                        <td>@Html.ActionLink("Löschen", "Delete", new { ID = this.Model[i].ID })</td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div class="form-group">
+        <h3>Produzenten</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 2)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => model[i].tbl_Personen.Name)</td>
+                        <td>@Html.HiddenFor(model => model[i].ID)</td>
+                        <td>@Html.ActionLink("Löschen", "Delete", new { ID = this.Model[i].ID })</td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div class="form-group">
+        <h3>Script</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 3)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => model[i].tbl_Personen.Name)</td>
+                        <td>@Html.HiddenFor(model => model[i].ID)</td>
+                        <td>@Html.ActionLink("Löschen", "Delete", new { ID = this.Model[i].ID })</td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+    <div class="form-group">
+        <h3>Darsteller</h3>
+        <table>
+            @for (int i = 0; i < this.Model.Count; i++)
+            {
+                if (Model[i].FunktionNr == 4)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => model[i].tbl_Personen.Name)</td>
+                        <td>@Html.HiddenFor(model => model[i].ID)</td>
+                        <td>@Html.ActionLink("Löschen", "Delete", new { ID = this.Model[i].ID })</td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+
+<div>
+    @Html.ActionLink("Zum Projekt", "Edit", "Projekte", null, null, "rels", new { id = Model[0].EntryNo}, null)
+</div>
+
+
+

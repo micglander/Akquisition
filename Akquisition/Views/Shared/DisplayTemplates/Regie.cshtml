@@ -1,0 +1,10 @@
+﻿@model efAkquisition.qry_ProjekteASP
+
+@if (Model != null)
+{
+     @Html.ActionLink(Model.Regie ?? "?", "Details", "Regisseure", new { id = Model.RegisseurNr }, null)
+}
+else
+{
+    @Html.TextBox("-")
+}

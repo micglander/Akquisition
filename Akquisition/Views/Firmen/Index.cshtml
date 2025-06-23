@@ -1,0 +1,54 @@
+﻿@model IEnumerable<efAkquisition.tbl_Firmen>
+
+@{
+    ViewBag.Title = "Produktionsfirmen";
+}
+
+
+<h2>Produktionsfirmen</h2>
+<div>
+    @Html.ActionLink("Neue Firma erstellen", "Create")
+</div>
+<hr />
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Firma)
+        </th>
+        <th>
+            @Html.Label("Imdb ID")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Companymeter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Job)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImdbID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Companymeter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Job)
+        </td>
+        <td>
+            @Html.ActionLink("Bearbeiten", "Edit", new { id=item.FirmaNr }) |
+            @Html.ActionLink("Löschen", "Delete", new { id=item.FirmaNr })
+        </td>
+    </tr>
+}
+    
+</table>
+

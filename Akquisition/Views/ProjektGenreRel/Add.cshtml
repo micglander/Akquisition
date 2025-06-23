@@ -1,0 +1,30 @@
+﻿@model List<int>
+
+@{
+    ViewBag.Title = "Genres hinzufügen: " + ViewBag.Projekt;
+}
+
+<h3>@Html.Raw(ViewBag.Projekt)</h3>
+<h3>Genres hinzufügen</h3>
+
+@using (Html.BeginForm("Add", "ProjektGenreRel", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-group">
+        @Html.HiddenFor(model => model[0])
+        <table>
+            @for (int i = 1; i < this.Model.Count; i++)
+            {
+                <tr>
+                   <td>@Html.DropDownListFor(model => model[i], new SelectList(ViewBag.Genres, "GenreNr", "Genre"))</td>
+                </tr>
+            }
+        </table>
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" value="Speichern" class="btn btn-primary"/>
+    </div>
+}
+

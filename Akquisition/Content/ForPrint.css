@@ -1,0 +1,57 @@
+﻿/*Vehindert, dass der Titel und die URL gedruckt werden*/
+@page {
+    margin: 0mm;
+}
+
+@media {
+  .dl-horizontal dt {
+    float: left;
+    width: 160px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  .dl-horizontal dd {
+    margin-left: 180px;
+  }
+  .dl-horizontal dd:before,
+  .dl-horizontal dd:after {
+    display: table;
+    content: " ";
+  }
+  .dl-horizontal dd:after {
+    clear: both;
+  }
+  .dl-horizontal dd:before,
+  .dl-horizontal dd:after {
+    display: table;
+    content: " ";
+  }
+  .dl-horizontal dd:after {
+    clear: both;
+  }
+}
+
+body {
+  width: 16cm;
+  color : #000000;
+  background : #ffffff;
+  font-family : "Times New Roman", Times, serif;
+  font-size : 12pt;
+  margin: 10mm 15mm 10mm 15mm;
+}
+a {
+  text-decoration : underline;
+  color : #0000ff;
+}
+#navigation, #advertising, #other {
+  display : none;
+} 
+
+/* unsichtbar im Druck */
+.dontPrint {
+    visibility: collapse;
+}

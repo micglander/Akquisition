@@ -1,0 +1,33 @@
+﻿@model efAkquisition.tbl_Land
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<hr/>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Land)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Land)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sortierung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sortierung)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Bearbeiten", "Edit", new { id = Model.LandNr }) |
+    @Html.ActionLink("Zum Index", "Index")
+</p>
