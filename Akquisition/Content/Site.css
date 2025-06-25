@@ -48,6 +48,11 @@ th {
     width:100px;
 }
 
+/* Klasse für Top Alignment, nötig für Label für Action Links */
+.content-label-top {
+    vertical-align:top;
+}
+
 /* Menüheader*/
 dropdown-header {
     font-weight: normal;
