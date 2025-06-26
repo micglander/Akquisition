@@ -148,7 +148,7 @@ namespace Akquisition.Controllers
         public ActionResult Register()
         {
             // Neuanmeldung
-            //return View();
+            // return View();
 
             // Micha
             // Hier soll sich niemand registrieren
