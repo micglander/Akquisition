@@ -47,7 +47,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tbl_Bearbeiter.Bearbeiter)
+            @Html.DisplayFor(model => model.ConcatBearbeiter) 
         </dd>
 
         <dt>
@@ -55,7 +55,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tbl_Anbieter.Kürzel)
+            @Html.DisplayFor(model => model.ConcatAnbieter)
         </dd>
 
         <dt>
@@ -309,7 +309,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Historie)
+            <div style="white-space: pre-wrap;">@Model.Historie</div>
         </dd>
 
         <dt>
@@ -317,7 +317,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Geschichte)
+            <div style="white-space: pre-wrap;">@Model.Geschichte</div>
+            @*@Html.DisplayFor(model => model.Geschichte)*@
         </dd>
 
         <dt>
@@ -325,7 +326,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Synopsis)
+            <div style="white-space: pre-wrap;">@Model.Synopsis</div>
         </dd>
 
         <dt>
@@ -333,7 +334,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Beurteilung_Lektor)
+            <div style="white-space: pre-wrap;">@Model.Beurteilung_Lektor</div>
         </dd>
 
         <dt>
@@ -341,7 +342,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Beurteilung)
+            <div style="white-space: pre-wrap;">@Model.Beurteilung</div>
         </dd>
 
         <dt>
@@ -349,7 +350,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Sonstiges)
+            <div style="white-space: pre-wrap;">@Model.Sonstiges</div>
         </dd>
 
         <dt>

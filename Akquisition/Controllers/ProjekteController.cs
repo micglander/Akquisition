@@ -120,6 +120,16 @@ namespace Akquisition.Controllers
             return View("Index", projekte.ToList());
         }
 
+        // Spezielle Statusliste mit einem hinzugefügten Status 'nicht verkauft'
+        private List<SelectListItem> SpecialStatus()
+        {
+            SelectList stati = new SelectList(db.tbl_Status, "StatusNr", "Status");
+            List<SelectListItem> selectListItems = stati.ToList();
+            selectListItems.Insert(selectListItems.Count, new SelectListItem { Value = "100", Text = "nicht verkauft" });
+            return selectListItems;
+        }
+
+
         public async Task<ActionResult> Filter()
         {
             MyStuff.ProjektFilter filter = new MyStuff.ProjektFilter();
@@ -127,7 +137,7 @@ namespace Akquisition.Controllers
 
             ViewBag.zustaendig = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter");
             ViewBag.Land = new SelectList(db.Laender, "Land", "Land");
-            ViewBag.Status = new SelectList(db.tbl_Status, "StatusNr", "Status");
+            ViewBag.Status = SpecialStatus();
             ViewBag.Archiv = new SelectList(new string[] { "aktuell", "Archiv" });
             ViewBag.Lektorat = new SelectList(db.tbl_Lektoratseinschaetzung, "LENr", "Lektoratseinschaetzung");
             ViewBag.Rating = new SelectList(db.tbl_Rating, "Rating", "Rating");
@@ -146,7 +156,7 @@ namespace Akquisition.Controllers
             // Falls Fehler auf der Seite bleiben
             ViewBag.zustaendig = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter");
             ViewBag.Land = new SelectList(db.Laender, "Land", "Land");
-            ViewBag.Status = new SelectList(db.tbl_Status, "StatusNr", "Status");
+            ViewBag.Status = SpecialStatus();
             ViewBag.Archiv = new SelectList(new string[] { "aktuell", "Archiv" });
             ViewBag.Lektorat = new SelectList(db.tbl_Lektoratseinschaetzung, "LENr", "Lektoratseinschaetzung");
             ViewBag.Rating = new SelectList(db.tbl_Rating, "Rating", "Rating");
@@ -185,10 +195,14 @@ namespace Akquisition.Controllers
         public ActionResult Create()
         {
             ViewBag.AnbieterNr = new SelectList(db.tbl_Anbieter.OrderBy(x => x.Kürzel), "AnbieterNr", "KÜRZEL");
+            ViewBag.BearbeiterNr = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter");
             ViewBag.Rating = new SelectList(db.tbl_Rating, "Rating", "Rating");
             ViewBag.StatusNr = new SelectList(db.tbl_Status, "StatusNr", "Status");
-            ViewBag.BearbeiterNr = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter");
-            //ViewBag.ProjektartNr = new SelectList(db.tbl_Projektart, "ProjektartNr", "Projektart");
+
+            // Version 3.0
+            ViewBag.AnbieterNr2 = new SelectList(db.tbl_Anbieter.OrderBy(x => x.Kürzel), "AnbieterNr", "KÜRZEL");
+            ViewBag.BearbeiterNr2 = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter");
+
             return View();
         }
 
@@ -214,11 +228,14 @@ namespace Akquisition.Controllers
             }
 
             ViewBag.AnbieterNr = new SelectList(db.tbl_Anbieter.OrderBy(x => x.Kürzel), "AnbieterNr", "KÜRZEL", tbl_Projekte.AnbieterNr);
+            ViewBag.BearbeiterNr = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter");
             ViewBag.Rating = new SelectList(db.tbl_Rating, "Rating", "Rating", tbl_Projekte.Rating);
             ViewBag.StatusNr = new SelectList(db.tbl_Status, "StatusNr", "Status", tbl_Projekte.StatusNr);
-            ViewBag.BearbeiterNr = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter");
-            //ViewBag.ProjektartNr = new SelectList(db.tbl_Projektart, "ProjektartNr", "Projektart");
-            //ViewBag.FormatNr = new SelectList(db.tbl_Filmformate, "FormatNr", "Format");
+
+            // Version 3.0
+            ViewBag.AnbieterNr2 = new SelectList(db.tbl_Anbieter.OrderBy(x => x.Kürzel), "AnbieterNr", "KÜRZEL", tbl_Projekte.AnbieterNr2);
+            ViewBag.BearbeiterNr2 = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter");
+
             return View(tbl_Projekte);
         }
 
@@ -241,9 +258,9 @@ namespace Akquisition.Controllers
             }
 
             ViewBag.AnbieterNr = new SelectList(db.tbl_Anbieter.OrderBy(x => x.Kürzel), "AnbieterNr", "KÜRZEL", projekt.AnbieterNr);
+            ViewBag.BearbeiterNr = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter", projekt.BearbeiterNr);
             ViewBag.Rating = new SelectList(db.tbl_Rating, "Rating", "Rating", projekt.Rating);
             ViewBag.StatusNr = new SelectList(db.tbl_Status, "StatusNr", "Status", projekt.StatusNr);
-            ViewBag.BearbeiterNr = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter", projekt.BearbeiterNr);
             ViewBag.LENr = new SelectList(db.tbl_Lektoratseinschaetzung, "LENr", "Lektoratseinschaetzung", projekt.LENr);
             ViewBag.ProjektartNr = new SelectList(db.tbl_Projektart, "ProjektartNr", "Projektart", projekt.ProjektartNr);
             ViewBag.FormatNr = new SelectList(db.tbl_Filmformate, "FormatNr", "Format", projekt.FormatNr);
@@ -255,6 +272,11 @@ namespace Akquisition.Controllers
             ViewBag.verkauft_an = new SelectList(db.tbl_Verleih.OrderBy(x => x.Verleih), "VerleihNr", "Verleih", projekt.verkauft_an);
             ViewBag.Age_Rating = new SelectList(projekt.Age_Rating_List, projekt.Age_Rating);
             ViewBag.MPAA = new SelectList(projekt.MPAA_List, projekt.MPAA);
+
+            // version 3.0
+            ViewBag.AnbieterNr2 = new SelectList(db.tbl_Anbieter.OrderBy(x => x.Kürzel), "AnbieterNr", "KÜRZEL", projekt.AnbieterNr2);
+            ViewBag.BearbeiterNr2 = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter", projekt.BearbeiterNr2);
+
             return View(projekt);
         }
 
@@ -292,6 +314,11 @@ namespace Akquisition.Controllers
             ViewBag.verkauft_an = new SelectList(db.tbl_Verleih.OrderBy(x => x.Verleih), "VerleihNr", "Verleih", projekt.verkauft_an);
             ViewBag.Age_Rating = new SelectList(projekt.Age_Rating_List, projekt.Age_Rating);
             ViewBag.MPAA = new SelectList(projekt.MPAA_List, projekt.MPAA);
+
+            // version 3.0
+            ViewBag.AnbieterNr2 = new SelectList(db.tbl_Anbieter.OrderBy(x => x.Kürzel), "AnbieterNr", "KÜRZEL", projekt.AnbieterNr2);
+            ViewBag.BearbeiterNr2 = new SelectList(db.tbl_Bearbeiter, "BearbeiterNr", "Bearbeiter", projekt.BearbeiterNr2);
+
             return View(projekt);
         }
 

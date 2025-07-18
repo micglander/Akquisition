@@ -82,19 +82,29 @@ namespace Akquisition.MyStuff
             }
 
             if (zustaendig != null)
-                projekte = projekte.Where(x => x.BearbeiterNr == zustaendig);
+                projekte = projekte.Where(x => x.BearbeiterNr == zustaendig || x.BearbeiterNr2 == zustaendig);
 
             if (!String.IsNullOrEmpty(Titel))
                 projekte = projekte.Where(x => (x.Titel.Contains(Titel) || x.Originaltitel.Contains(Titel)));
 
             if (!String.IsNullOrEmpty(Anbieter))
-                projekte = projekte.Where(x => x.Anbieter.Contains(Anbieter));
+                projekte = projekte.Where(x => x.Anbieter.Contains(Anbieter) || x.Anbieter2.Contains(Anbieter));
 
             if (!String.IsNullOrEmpty(Archiv))
                 projekte = projekte.Where(x => x.Status2 == Archiv);
 
             if (Status.HasValue)
-                projekte = projekte.Where(x => x.StatusNr == Status.Value);
+            {
+                // Spezialfall, manueller Status=100 - nicht verkauft
+                if (Status == 100)
+                {
+                    projekte = projekte.Where(x => x.StatusNr != 11);
+                }
+                else
+                {
+                    projekte = projekte.Where(x => x.StatusNr == Status.Value);
+                }
+            }
 
             if (!String.IsNullOrEmpty(Land))
             {
