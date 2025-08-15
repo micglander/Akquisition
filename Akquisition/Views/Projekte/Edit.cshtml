@@ -505,23 +505,6 @@
           </div>
       </div>
 
-      <div class="form-group">
-          @Html.Label("Beteiligte", htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-8">
-              @*<p class="form-control-static">
-                  @Html.DisplayFor(Model => Model.PersonenString)
-              </p>*@
-              @for (int i = 0; i < Model.PersonenList.Count(); i++)
-              {
-              @Html.ActionLink(@Model.PersonenList[i].Name, "Edit", "Personen", new { id = @Model.PersonenList[i].PersonNr }, null) if (i < Model.PersonenList.Count() - 1)
-              {@Html.Raw(" / ")}
-              }
-          </div>
-          <div class="col-md-2">
-              @Html.ActionLink("Add", "PreAdd", "ProjektPersonRel", new { EntryNo = Model.ENTRY_No }, null) | @Html.ActionLink("Delete", "Edit", "ProjektPersonRel", new { EntryNo = Model.ENTRY_No }, null)
-          </div>
-      </div>
-
       @* Neue Beteiligte *@
 
       <div class="form-group">

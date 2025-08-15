@@ -22,7 +22,12 @@ namespace Akquisition.Controllers
 
             // Sein Warenkorb
             tbl_Warenkorb warenkorb = db.tbl_Warenkorb.Where(x => x.Benutzer.Equals(login)).FirstOrDefault();
-            return View(warenkorb.tbl_WarenkorbProjektRel.OrderByDescending(x => x.Prio).ToList());
+            List<tbl_WarenkorbProjektRel> mylist = new List<tbl_WarenkorbProjektRel>();
+            if (warenkorb != null)
+            {
+                mylist = warenkorb.tbl_WarenkorbProjektRel.OrderByDescending(x => x.Prio).ToList();
+            }
+            return View(mylist);
         }
 
         [HttpPost]

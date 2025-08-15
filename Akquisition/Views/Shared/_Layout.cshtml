@@ -38,7 +38,8 @@
                             </ul>
                     </li>
 
-                    <li class="dropdown">
+                    @* Micha: Bereich Ausdruck auskommentiert in Version 3.0, wird nicht mehr gebraucht *@
+                    @*<li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Ausdruck <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Marktliste", "FestivalReport", "Reports")</li>
@@ -53,12 +54,13 @@
                             <li>@Html.ActionLink("Eigenproduktionen", "Produktionsliste", "Reports", new { was = 2 }, null)</li>
                             <li>@Html.ActionLink("Akquisition/Co-Produktionen", "Produktionsliste", "Reports", new { was = 3 }, null)</li>
                         </ul>
-                    </li>
+                    </li>*@
 
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Bearbeiten <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Anbieter", "Index", "Anbieter")</li>
+                            <li>@Html.ActionLink("Verleiher", "Index", "Verleih")</li>
                             <li>@Html.ActionLink("Produktionsfirmen", "Index", "Firmen")</li>
                             <li>@Html.ActionLink("Personen", "Filter", "Personen")</li>
                             <li>@Html.ActionLink("Länder", "Index", "Land")</li>
